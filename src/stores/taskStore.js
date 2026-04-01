@@ -2,14 +2,18 @@ import { defineStore } from "pinia";
 
 export const useTaskStore = defineStore("taskStore", {
   state: () => ({
-    tasks: [
-      { id: 1, title: "Running in the morning", isFav: false },
-      { id: 2, title: "Eating Foods", isFav: true },
-      { id: 3, title: "Taking Medicine", isFav: false },
-      { id: 4, title: "Cycling To Office", isFav: true },
-    ],
+    tasks: [],
+    loading: false
   }),
   actions: {
+    async fetchTasks() {
+      this.loading = true
+      const res = await fetch("http://localhost:3000/tasks")
+      const data = await res.json()
+
+      this.tasks = data
+      this.loading = false
+    },
     addTask(task) {
       this.tasks.push(task);
     },
