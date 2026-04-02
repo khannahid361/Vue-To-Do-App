@@ -23,7 +23,7 @@
     {
       "id": "5iqhFgLXh0Y",
       "title": "Namaz Everyday",
-      "isFav": false
+      "isFav": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
